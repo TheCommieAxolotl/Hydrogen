@@ -1,0 +1,33 @@
+{
+    "name": "hydrogen",
+    "version": "0.0.1",
+    "description": "Hydrogen is a simple and fast web browser built on Electron.",
+    "main": "src/index.js",
+    "scripts": {
+        "build:sass": "sass  --no-source-map src/assets/sass:src/assets/css",
+        "watch:sass": "sass  --no-source-map --watch src/assets/sass:src/assets/css",
+        "start": "electron ."
+    },
+    "author": "TheCommieAxolotl",
+    "keywords": [
+        "electron",
+        "browser",
+        "javascript",
+        "web"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^18.0.4"
+    },
+    "dependencies": {
+        "sass": "^1.49.8"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheCommieAxolotl/Hydrogen.git"
+    },
+    "bugs": {
+        "url": "https://github.com/TheCommieAxolotl/Hydrogen/issues"
+    },
+    "homepage": "https://github.com/TheCommieAxolotl/Hydrogen#readme"
+}

@@ -1,0 +1,30 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+// @use "../abstracts";
+
+// #header {
+//     #tabs {
+//         padding: 5px 20px 0 20px;
+//         font-size: 20px;
+//         margin-bottom: 5px;
+//         display: flex;
+//         flex-direction: row;
+//         gap: 5px;
+
+//         .tab {
+//             @include abstracts.tablike;
+
+//             img {
+//                 width: 16px;
+//                 height: 16px;
+//                 border: none;
+//                 outline: none;
+//                 border-radius: 2.5px;
+//                 margin-right: 5px;
+//             }
+//         }
+//     }
+// }

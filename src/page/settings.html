@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2022 Hydrogen Team. All rights reserved.
+    Licensed under the MIT License. See LICENSE in the project root for license information.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HYDROGEN:SETTINGS</title>
+        <link rel="stylesheet" href="../assets/css/embedded.css" />
+    </head>
+    <body id="settings">
+        <img src="../assets/images/Hydrogen-Empty.png" class="hydrogen-icon" />
+        <h1>Settings</h1>
+        <div class="settings-group">
+            <h2 class="settings-group-title">Appearance</h2>
+            <div class="settings-item">
+                <div class="settings-item-label">
+                    <label for="theme">Theme</label>
+                </div>
+                <div class="settings-item-control">
+                    <select id="theme">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-item-label">
+                    <label for="font-size">Font Size</label>
+                </div>
+                <div class="settings-item-control">
+                    <select id="font-size">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="settings-group">
+            <h2 class="settings-group-title">Pages</h2>
+            <div class="settings-item">
+                <div class="settings-item-label">
+                    <label for="start-page">Start Page</label>
+                </div>
+                <div class="settings-item-control">
+                    <input id="start-page" type="text" placeholder="https://duckduckgo.com" />
+                </div>
+            </div>
+            <div class="settings-item">
+                <div class="settings-item-label">
+                    <label for="search-engine">Search Engine</label>
+                </div>
+                <div class="settings-item-control">
+                    <select id="search-engine">
+                        <option value="duckduckgo">DuckDuckGo</option>
+                        <option value="google">Google</option>
+                        <option value="bing">Bing</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button id="save-button">Save</button>
+        <script src="./js/settings.js"></script>
+    </body>
+</html>

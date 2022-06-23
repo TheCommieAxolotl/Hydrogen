@@ -1,0 +1,45 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+@use "../abstracts";
+
+.tooltip {
+    position: absolute;
+    display: inline-block;
+    width: calc(abstracts.$buttonsWidth / 6);
+    height: calc(abstracts.$buttonsWidth / 6);
+}
+
+.inner-tooltip {
+    user-select: none;
+    width: 75px;
+    background-color: #181616;
+    color: #fff;
+    padding: 6px 6px;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 70%;
+    left: 50%;
+    margin-left: calc(75px / -2);
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.1s ease;
+}
+
+.tooltip:hover .inner-tooltip {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+}
+
+.theme-light {
+    .inner-tooltip {
+        background: #dad9d9 !important;
+        color: #000 !important;
+    }
+}

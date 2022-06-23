@@ -1,0 +1,11 @@
+{
+    "name": "Hydrogen Builtin",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "Turns the page red when you click the icon",
+    "minimum_chrome_version": "10.0",
+    "devtools_page": "devtools.html",
+    "background": {
+        "service_worker": "background.js"
+    }
+}

@@ -1,0 +1,48 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+@use "../abstracts";
+
+.popup-item {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    align-items: center;
+    padding: 7.5px 10px;
+    border-radius: 2.5px;
+
+    &:hover {
+        background: lighten(abstracts.$background-02, 10%);
+    }
+}
+
+.popup-separator {
+    display: flex;
+    width: 100%;
+    height: 1px;
+    background: lighten(abstracts.$background-02, 5%);
+}
+
+#options-popup {
+    @include abstracts.basePopup;
+    transform: translateY(70px);
+    display: none;
+}
+
+.theme-light {
+    .popup-item {
+        &:hover {
+            background: lighten(abstracts.$LIGHT-background-02, 10%);
+        }
+    }
+
+    .popup-separator {
+        background: lighten(abstracts.$LIGHT-background-02, 5%);
+    }
+
+    #options-popup {
+        @include abstracts.LIGHT-basePopup;
+    }
+}

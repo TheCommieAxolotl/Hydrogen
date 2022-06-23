@@ -1,0 +1,35 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+@use "../abstracts";
+
+#views {
+    height: calc(100% - abstracts.$headerHeight);
+    overflow: hidden;
+    width: 100vw;
+}
+
+.page {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.indicator {
+    background-color: abstracts.$accent-default;
+    width: 0vw;
+    height: 5px;
+    color: abstracts.$white;
+    position: absolute;
+    font-size: 40px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.4s ease, background-color 0.2s ease 0.4s;
+}

@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+$white: #eeeeee;
+$black: #000000;
+$background-00: #252729;
+$background-01: #333336;
+$background-02: #181616;
+
+$accent-default: #7eaef1;
+$accent-default-foreground: #4e72a6;
+$accent-default-gray: #6f6f6f;
+
+$buttonsWidth: 160px;
+$headerHeight: 40px;
+
+$embedded-foreground-00: $white;
+$embedded-foreground-01: darken($white, 10%);
+$embedded-foreground-02: darken($white, 20%);
+$embedded-foreground-03: darken($white, 40%);
+$embedded-foreground-04: darken($white, 50%);
+$embedded-background-00: #202020;
+$embedded-background-01: #303030;
+$embedded-background-02: #39383d;
+
+$LIGHT-white: #000000;
+$LIGHT-black: #eeeeee;
+$LIGHT-background-00: #dbe2ea;
+$LIGHT-background-01: #c8c8d5;
+$LIGHT-background-02: #c4c4cf;
+
+$LIGHT-accent-default: #4072b8;
+$LIGHT-accent-default-foreground: #375b8d;
+$LIGHT-accent-default-gray: #afafb4;
+
+$LIGHT-embedded-foreground-00: $LIGHT-white;
+$LIGHT-embedded-foreground-01: lighten($LIGHT-white, 10%);
+$LIGHT-embedded-background-00: #dddce1;
+$LIGHT-embedded-background-01: #dbdbdb;
+$LIGHT-embedded-background-02: #c1c1c1;

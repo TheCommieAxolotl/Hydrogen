@@ -1,0 +1,102 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+@use "variables";
+
+@mixin tablike {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 5px;
+    border-radius: 2.5px;
+    background-color: variables.$background-01;
+    color: darken(variables.$white, 10%);
+    font-size: 14px;
+    margin-top: -1px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    height: 30px;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+        background: lighten(variables.$background-01, 5%);
+        outline: 1px solid darken(variables.$white, 10%);
+    }
+}
+
+@mixin common-button {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(variables.$buttonsWidth / 6);
+    height: calc(variables.$buttonsWidth / 6);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background 0.2s ease;
+
+    svg {
+        color: darken(variables.$white, 5%);
+    }
+
+    &:hover {
+        svg {
+            color: darken(variables.$white, 10%);
+        }
+        background: lighten(variables.$background-01, 5%);
+    }
+}
+
+@mixin basePopup {
+    min-width: 200px;
+    position: absolute;
+    z-index: 5;
+    padding: 10px;
+    background: variables.$background-02;
+    border-radius: 5px;
+    right: 20px;
+    flex-direction: column;
+    gap: 2.5px;
+}
+
+@mixin LIGHT-common-button {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(variables.$buttonsWidth / 6);
+    height: calc(variables.$buttonsWidth / 6);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background 0.2s ease;
+
+    svg {
+        color: darken(variables.$LIGHT-white, 5%) !important;
+    }
+
+    &:hover {
+        svg {
+            color: darken(variables.$LIGHT-white, 10%) !important;
+        }
+        background: lighten(variables.$LIGHT-background-01, 5%) !important;
+    }
+}
+
+@mixin LIGHT-basePopup {
+    min-width: 200px;
+    position: absolute;
+    z-index: 5;
+    padding: 10px;
+    background: variables.$LIGHT-background-02 !important;
+    border-radius: 5px;
+    right: 20px;
+    flex-direction: column;
+    gap: 2.5px;
+}

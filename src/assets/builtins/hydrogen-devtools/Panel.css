@@ -1,0 +1,51 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #202124;
+    color: #fff;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.title-container {
+    padding: 20px;
+}
+
+.body-container {
+    padding-inline: 20px;
+}
+
+.body-container h2 {
+    margin-bottom: 5px;
+}
+
+.picker {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #eee;
+    cursor: pointer;
+}
+
+.picker:hover {
+    color: #fff;
+}

@@ -1,0 +1,187 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+@use "../abstracts";
+
+#titlebar {
+    background: abstracts.$background-00;
+    padding-inline: 70px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: darken(abstracts.$white, 50%);
+    font-weight: 700;
+    font-size: 12px;
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.window-focused #titlebar {
+    color: darken(abstracts.$white, 20%);
+}
+
+#header {
+    width: 100%;
+    height: abstracts.$headerHeight;
+    background: abstracts.$background-00;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    border-bottom: 2px solid darken(abstracts.$background-00, 10%);
+    box-sizing: border-box;
+    z-index: 99;
+
+    #search {
+        font-size: 20px;
+        display: flex;
+        gap: 5px;
+        width: 100%;
+        margin: 5px;
+        box-sizing: border-box;
+
+        font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", -apple-system, sans-serif;
+
+        .tab-button {
+            @include abstracts.tablike;
+            background-color: abstracts.$background-00;
+
+            height: 30px;
+            width: 30px;
+        }
+
+        #omnibox {
+            @include abstracts.tablike;
+            background-color: abstracts.$background-00;
+            cursor: text;
+
+            .secure-indicator {
+                width: 16px;
+                height: 16px;
+                color: abstracts.$accent-default;
+            }
+
+            img {
+                width: 16px;
+                height: 16px;
+                border: none;
+                outline: none;
+                border-radius: 2.5px;
+                margin-right: 5px;
+            }
+
+            svg {
+                margin-right: 5px;
+            }
+
+            &:focus-within {
+                outline: 1px solid darken(abstracts.$white, 10%);
+            }
+
+            input {
+                color: abstracts.$white;
+                width: 100%;
+                outline: 0;
+                border: 0;
+                background: transparent;
+                height: fit-content;
+            }
+        }
+    }
+
+    // #tabs {
+    //     .tab-button {
+    //         @include abstracts.tablike;
+    //         height: 30px;
+    //         width: 30px;
+    //     }
+    // }
+
+    #actions {
+        padding: 0 20px 0 20px;
+        background-color: abstracts.$background-01;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & > div {
+            display: flex;
+            gap: 2.5px;
+        }
+
+        .disabled {
+            svg {
+                color: darken(abstracts.$white, 50%) !important;
+            }
+            pointer-events: none;
+        }
+
+        .active {
+            svg {
+                color: darken(abstracts.$white, 10%) !important;
+            }
+            background: darken(abstracts.$background-01, 5%);
+
+            & .popup {
+                display: flex;
+            }
+        }
+
+        .nav-button {
+            @include abstracts.common-button;
+
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}
+
+.theme-light {
+    #header {
+        background: abstracts.$LIGHT-background-00 !important;
+
+        #omnibox {
+            background: abstracts.$LIGHT-background-01 !important;
+            color: darken(abstracts.$LIGHT-white, 10%) !important;
+
+            input {
+                color: abstracts.$LIGHT-white !important;
+            }
+        }
+    }
+    #titlebar {
+        background: abstracts.$LIGHT-background-00 !important;
+        color: darken(abstracts.$LIGHT-white, 50%) !important;
+    }
+
+    #actions {
+        background-color: abstracts.$LIGHT-background-01 !important;
+
+        .disabled {
+            svg {
+                color: darken(abstracts.$LIGHT-white, 50%) !important;
+            }
+        }
+
+        .active {
+            svg {
+                color: darken(abstracts.$LIGHT-white, 10%) !important;
+            }
+            background: darken(abstracts.$LIGHT-background-01, 5%) !important;
+        }
+
+        .nav-button {
+            @include abstracts.LIGHT-common-button;
+        }
+    }
+}

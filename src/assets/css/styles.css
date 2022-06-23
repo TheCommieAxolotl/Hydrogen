@@ -1,0 +1,522 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+#titlebar {
+  background: #252729;
+  padding-inline: 70px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6f6f6f;
+  font-weight: 700;
+  font-size: 12px;
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.window-focused #titlebar {
+  color: #bbbbbb;
+}
+
+#header {
+  width: 100%;
+  height: 40px;
+  background: #252729;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  border-bottom: 2px solid #0d0e0e;
+  box-sizing: border-box;
+  z-index: 99;
+}
+#header #search {
+  font-size: 20px;
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  margin: 5px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", -apple-system, sans-serif;
+}
+#header #search .tab-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 5px;
+  border-radius: 2.5px;
+  background-color: #333336;
+  color: #d5d5d5;
+  font-size: 14px;
+  margin-top: -1px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  height: 30px;
+  width: 100%;
+  background-color: #252729;
+  height: 30px;
+  width: 30px;
+}
+#header #search .tab-button:hover, #header #search .tab-button:focus {
+  background: #3f3f43;
+  outline: 1px solid #d5d5d5;
+}
+#header #search #omnibox {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 5px;
+  border-radius: 2.5px;
+  background-color: #333336;
+  color: #d5d5d5;
+  font-size: 14px;
+  margin-top: -1px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  height: 30px;
+  width: 100%;
+  background-color: #252729;
+  cursor: text;
+}
+#header #search #omnibox:hover, #header #search #omnibox:focus {
+  background: #3f3f43;
+  outline: 1px solid #d5d5d5;
+}
+#header #search #omnibox .secure-indicator {
+  width: 16px;
+  height: 16px;
+  color: #7eaef1;
+}
+#header #search #omnibox img {
+  width: 16px;
+  height: 16px;
+  border: none;
+  outline: none;
+  border-radius: 2.5px;
+  margin-right: 5px;
+}
+#header #search #omnibox svg {
+  margin-right: 5px;
+}
+#header #search #omnibox:focus-within {
+  outline: 1px solid #d5d5d5;
+}
+#header #search #omnibox input {
+  color: #eeeeee;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  height: fit-content;
+}
+#header #actions {
+  padding: 0 20px 0 20px;
+  background-color: #333336;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header #actions > div {
+  display: flex;
+  gap: 2.5px;
+}
+#header #actions .disabled {
+  pointer-events: none;
+}
+#header #actions .disabled svg {
+  color: #6f6f6f !important;
+}
+#header #actions .active {
+  background: #272729;
+}
+#header #actions .active svg {
+  color: #d5d5d5 !important;
+}
+#header #actions .active .popup {
+  display: flex;
+}
+#header #actions .nav-button {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26.6666666667px;
+  height: 26.6666666667px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+#header #actions .nav-button svg {
+  color: #e1e1e1;
+}
+#header #actions .nav-button:hover {
+  background: #3f3f43;
+}
+#header #actions .nav-button:hover svg {
+  color: #d5d5d5;
+}
+#header #actions .nav-button svg {
+  width: 25px;
+  height: 25px;
+}
+
+.theme-light #header {
+  background: #dbe2ea !important;
+}
+.theme-light #header #omnibox {
+  background: #c8c8d5 !important;
+  color: black !important;
+}
+.theme-light #header #omnibox input {
+  color: #000000 !important;
+}
+.theme-light #titlebar {
+  background: #dbe2ea !important;
+  color: black !important;
+}
+.theme-light #actions {
+  background-color: #c8c8d5 !important;
+}
+.theme-light #actions .disabled svg {
+  color: black !important;
+}
+.theme-light #actions .active {
+  background: #babaca !important;
+}
+.theme-light #actions .active svg {
+  color: black !important;
+}
+.theme-light #actions .nav-button {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26.6666666667px;
+  height: 26.6666666667px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+.theme-light #actions .nav-button svg {
+  color: black !important;
+}
+.theme-light #actions .nav-button:hover {
+  background: #d6d6e0 !important;
+}
+.theme-light #actions .nav-button:hover svg {
+  color: black !important;
+}
+
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+#views {
+  height: calc(100% - 40px);
+  overflow: hidden;
+  width: 100vw;
+}
+
+.page {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.indicator {
+  background-color: #7eaef1;
+  width: 0vw;
+  height: 5px;
+  color: #eeeeee;
+  position: absolute;
+  font-size: 40px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.4s ease, background-color 0.2s ease 0.4s;
+}
+
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+.popup-item {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  align-items: center;
+  padding: 7.5px 10px;
+  border-radius: 2.5px;
+}
+.popup-item:hover {
+  background: #332e2e;
+}
+
+.popup-separator {
+  display: flex;
+  width: 100%;
+  height: 1px;
+  background: #252222;
+}
+
+#options-popup {
+  min-width: 200px;
+  position: absolute;
+  z-index: 5;
+  padding: 10px;
+  background: #181616;
+  border-radius: 5px;
+  right: 20px;
+  flex-direction: column;
+  gap: 2.5px;
+  transform: translateY(70px);
+  display: none;
+}
+
+.theme-light .popup-item:hover {
+  background: #e0e0e6;
+}
+.theme-light .popup-separator {
+  background: #d2d2da;
+}
+.theme-light #options-popup {
+  min-width: 200px;
+  position: absolute;
+  z-index: 5;
+  padding: 10px;
+  background: #c4c4cf !important;
+  border-radius: 5px;
+  right: 20px;
+  flex-direction: column;
+  gap: 2.5px;
+}
+
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+.tooltip {
+  position: absolute;
+  display: inline-block;
+  width: 26.6666666667px;
+  height: 26.6666666667px;
+}
+
+.inner-tooltip {
+  user-select: none;
+  width: 75px;
+  background-color: #181616;
+  color: #fff;
+  padding: 6px 6px;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 70%;
+  left: 50%;
+  margin-left: -37.5px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.1s ease;
+}
+
+.tooltip:hover .inner-tooltip {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+
+.theme-light .inner-tooltip {
+  background: #dad9d9 !important;
+  color: #000 !important;
+}
+
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  overflow: hidden;
+  height: 100%;
+  font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", -apple-system, sans-serif;
+  background: #0d0e0e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

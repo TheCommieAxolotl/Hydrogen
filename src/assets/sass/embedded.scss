@@ -1,0 +1,216 @@
+/**
+ * Copyright (c) 2022 Hydrogen Team. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ */
+
+@use "abstracts";
+
+html,
+body {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    color: abstracts.$embedded-foreground-00;
+    background-color: abstracts.$embedded-background-00;
+    font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", -apple-system, sans-serif;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+.hydrogen-icon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 80px;
+}
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .settings-group-title {
+        margin-left: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        color: abstracts.$embedded-foreground-01;
+        margin-bottom: 10px;
+    }
+
+    .settings-item {
+        padding: 30px 60px;
+        box-sizing: border-box;
+        border-bottom: thin solid abstracts.$embedded-background-01;
+        display: flex;
+        justify-content: space-between;
+
+        .settings-item-label {
+            font-size: 16px;
+            color: abstracts.$embedded-foreground-01;
+            font-weight: 500;
+        }
+
+        .settings-item-control {
+            select {
+                border-radius: 2.5px;
+                background-color: abstracts.$embedded-background-01;
+                color: abstracts.$embedded-foreground-01;
+                border: 1px solid rgb(133, 133, 133);
+                font-size: 14px;
+                font-weight: 500;
+                padding: 5px 7px;
+                transition: all 0.2s ease;
+
+                &:focus-within {
+                    outline: 1px solid abstracts.$embedded-foreground-01;
+                }
+            }
+
+            input {
+                border-radius: 2.5px;
+                border: none;
+                width: 200px;
+                background-color: abstracts.$embedded-background-01;
+                color: abstracts.$embedded-foreground-01;
+                border: 1px solid rgb(133, 133, 133);
+                font-size: 14px;
+                font-weight: 500;
+                padding: 5px 7px;
+                transition: all 0.2s ease;
+
+                &:focus-within {
+                    outline: 1px solid abstracts.$embedded-foreground-01;
+                }
+            }
+        }
+    }
+}
+
+.error-container {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    color: abstracts.$embedded-foreground-01;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .error-code {
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 600;
+            color: abstracts.$embedded-foreground-03;
+        }
+
+        margin-bottom: 10px;
+        max-width: min(43%, 350px);
+    }
+
+    .error-details {
+        margin-top: 10px;
+        font-weight: 500;
+        font-size: 1rem;
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin-bottom: 5px;
+                color: abstracts.$embedded-foreground-03;
+            }
+        }
+    }
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+    width: 100%;
+    height: 83%;
+    overflow: hidden scroll;
+
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+
+    .history-item {
+        padding: 30px 60px;
+        box-sizing: border-box;
+        border-bottom: thin solid abstracts.$embedded-background-01;
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+
+        .title {
+            font-size: 16px;
+            color: abstracts.$embedded-foreground-01;
+            font-weight: 500;
+            width: 40vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .url {
+            color: abstracts.$embedded-foreground-02;
+            font-size: 14px;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+            text-align: end;
+        }
+    }
+}
+
+#save-button {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: abstracts.$embedded-foreground-01;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 1.5px;
+    transition: all 0.2s ease;
+    border: none;
+    background: abstracts.$accent-default-foreground;
+
+    &:hover {
+        background: darken(abstracts.$accent-default-foreground, 10%);
+    }
+
+    &[clicked] {
+        background: abstracts.$accent-default-gray;
+        pointer-events: none;
+    }
+}
