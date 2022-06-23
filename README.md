@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width="200" src="https://raw.githubusercontent.com/TheCommieAxolotl/Hydrogen/main/src/assets/images/Hydrogen-Empty.png" alt="Hydrogen Logo">
+  <img width="500" src="https://raw.githubusercontent.com/TheCommieAxolotl/Hydrogen/main/src/assets/images/promotional/Window.png" alt="Hydrogen Logo">
 </p>
 
 # Hydrogen, a simple browser.
