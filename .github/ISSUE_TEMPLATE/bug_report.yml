@@ -15,7 +15,7 @@ body:
           label: Is this Bug Known?
           description: Do we already know about this?
           options:
-              - label: Yes
+              - label: "Yes"
     - type: textarea
       id: what-happened
       attributes:
