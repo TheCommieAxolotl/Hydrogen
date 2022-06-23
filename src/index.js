@@ -12,6 +12,8 @@ app.name = "Hydrogen";
 const NavigationManager = require("./modules/navigation");
 const MenuManager = require("./modules/menus");
 
+process.traceProcessWarnings = true;
+
 let win;
 
 process.env.SETTINGS_PATH = path.join(__dirname, "../", "data", "settings.json");
@@ -87,18 +89,19 @@ const createWindow = () => {
 
     view.webContents.on("page-title-updated", (event, title) => {
         win.setTitle(`${title} - Hydrogen`);
-        win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "${title} - Hydrogen"`);
+        win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "${title} - Hydrogen";0`);
     });
 
     view.webContents.on("page-favicon-updated", (event, favicons) => {
-        console.log(favicons);
         // prettier-ignore
-        win.webContents.executeJavaScript(`if (document.querySelector("#omnibox svg")) {const e = document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin", '<img src="${favicons[0]}"/>');e.remove();} else {const e = document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin", '<img src="${favicons[0]}"/>');e.remove(); }`);
+        win.webContents.executeJavaScript(
+            `if (document.querySelector("#omnibox svg")) {const e = document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin", '<img src="${favicons[0]}"/>');e.remove();} else {const e = document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin", '<img src="${favicons[0]}"/>');e.remove(); };0`
+        );
     });
 
     view.webContents.on("did-change-theme-color", (event, color) => {
-        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "100vw"`);
-        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = "${color}"`);
+        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "100vw";0`);
+        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = "${color}";0`);
     });
 
     view.webContents.on(
@@ -334,23 +337,23 @@ const createWindow = () => {
         if (view.webContents.getURL().includes("src/page/settings.html")) {
             win.setTitle("Settings - Hydrogen");
         }
-        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "${Math.random() * 15}vw"`); // TODO: Replace Math.random with an actual progress indicator
-        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = ""`);
+        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "${Math.random() * 15}vw";0`); // TODO: Replace Math.random with an actual progress indicator
+        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = "";0`);
     });
     view.webContents.on("did-stop-loading", (e) => {
         NavigationManager.updateNav(e);
-        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "100vw"`);
-        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = "transparent"`);
+        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "100vw";0`);
+        win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = "transparent";0`);
         setTimeout(() => {
-            win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "0vw"`);
+            win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "0vw";0`);
         }, 500);
     });
     view.webContents.on("did-fail-load", (e) => {
         view.webContents.loadFile(path.join(__dirname, "page", "error.html"));
         NavigationManager.updateNav(null, "error");
         setTimeout(() => {
-            win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "100vw"`);
-            win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = "#eb6868"`);
+            win.webContents.executeJavaScript(`document.querySelector(".indicator").style.width = "100vw";0`);
+            win.webContents.executeJavaScript(`document.querySelector(".indicator").style.backgroundColor = "#eb6868";0`);
         }, 800);
     });
     view.webContents.setWindowOpenHandler((e) => {
@@ -487,11 +490,11 @@ const createWindow = () => {
     win.loadFile("src/page/index.html");
 
     win.on("focus", () => {
-        win.webContents.send("recFocus");
+        win.webContents.emit("recFocus");
     });
 
     win.on("blur", () => {
-        win.webContents.send("recUnfocus");
+        win.webContents.emit("recUnfocus");
     });
 
     win.once("ready-to-show", () => {

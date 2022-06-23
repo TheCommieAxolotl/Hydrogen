@@ -39,7 +39,7 @@ module.exports = new (class NavigationManager {
         this.SEARCH_ENGINE_URL = this.SEARCH_ENGINES[searchEngine];
         this.SEARCH_ENGINE_HOMEPAGE = this.SEARCH_ENGINE_HOMEPAGES[searchEngine];
 
-        this.win.webContents.executeJavaScript(`document.getElementById("url").placeholder = "Search with ${this.SEARCH_ENGINE_NAMES[this.SEARCH_ENGINE]} or Enter URL"`);
+        this.win.webContents.executeJavaScript(`document.getElementById("url").placeholder = "Search with ${this.SEARCH_ENGINE_NAMES[this.SEARCH_ENGINE]} or Enter URL";0`);
     }
 
     async initialise(browserView, win) {
@@ -101,7 +101,7 @@ module.exports = new (class NavigationManager {
 
     async updateURL(keyCode, url) {
         if (keyCode === 13) {
-            this.win.webContents.executeJavaScript('document.getElementById("url").blur()');
+            this.win.webContents.executeJavaScript('document.getElementById("url").blur();0');
             let val = url || (await this.win.webContents.executeJavaScript('document.getElementById("url").value'));
 
             if (
@@ -210,25 +210,25 @@ module.exports = new (class NavigationManager {
         }
 
         if (this.webContents.canGoBack()) {
-            this.win.webContents.executeJavaScript('document.querySelector("#back").classList.remove("disabled")');
+            this.win.webContents.executeJavaScript('document.querySelector("#back").classList.remove("disabled");0');
         } else {
-            this.win.webContents.executeJavaScript('document.querySelector("#back").classList.add("disabled")');
+            this.win.webContents.executeJavaScript('document.querySelector("#back").classList.add("disabled");0');
         }
 
         if (this.webContents.canGoForward()) {
-            this.win.webContents.executeJavaScript('document.querySelector("#forward").classList.remove("disabled")');
+            this.win.webContents.executeJavaScript('document.querySelector("#forward").classList.remove("disabled");0');
         } else {
-            this.win.webContents.executeJavaScript('document.querySelector("#forward").classList.add("disabled")');
+            this.win.webContents.executeJavaScript('document.querySelector("#forward").classList.add("disabled");0');
         }
 
         if (this.webContents.getTitle() === "ABOUT:BLANK") {
-            this.win.webContents.executeJavaScript('document.querySelector("#url").value = ""');
-            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Document - Hydrogen"`);
+            this.win.webContents.executeJavaScript('document.querySelector("#url").value = "";0');
+            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Document - Hydrogen";0`);
         } else if (this.webContents.getTitle() == "HYDROGEN:ERROR") {
-            this.win.webContents.executeJavaScript('document.querySelector("#url").value = ""');
-            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Problem Loading Page - Hydrogen"`);
+            this.win.webContents.executeJavaScript('document.querySelector("#url").value = "";0');
+            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Problem Loading Page - Hydrogen";0`);
         } else if (this.webContents.getTitle() == "HYDROGEN:SETTINGS") {
-            this.win.webContents.executeJavaScript('document.querySelector("#url").value = ""');
+            this.win.webContents.executeJavaScript('document.querySelector("#url").value = "";0');
             fs.readFile(process.env.SETTINGS_PATH, "utf-8", (error, obj) => {
                 const Settings = JSON.parse(obj);
                 this.webContents.executeJavaScript(`
@@ -240,11 +240,11 @@ module.exports = new (class NavigationManager {
                 } catch (error) {
                     console.error(error);
                 }
-                `);
+                ;0`);
             });
-            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Settings - Hydrogen"`);
+            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Settings - Hydrogen";0`);
         } else if (this.webContents.getTitle() == "HYDROGEN:HISTORY") {
-            this.win.webContents.executeJavaScript('document.querySelector("#url").value = ""');
+            this.win.webContents.executeJavaScript('document.querySelector("#url").value = "";0');
             fs.readFile(process.env.HISTORY_PATH, "utf-8", (error, obj) => {
                 this.webContents.executeJavaScript(`
                     window._hydrogenHTML = \`\`
@@ -257,50 +257,56 @@ module.exports = new (class NavigationManager {
                     })
 
                     document.querySelector(".history-list").innerHTML = window._hydrogenHTML
-                `);
+                ;0`);
             });
-            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "History - Hydrogen"`);
+            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "History - Hydrogen";0`);
         }
 
         if (string) {
             this.win.setTitle(`${string} - Hydrogen`);
-            this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "${string} - Hydrogen"`);
+            this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "${string} - Hydrogen";0`);
 
-            return this.win.webContents.executeJavaScript(`document.getElementById("url").value = "hydrogen:${string.toLowerCase()}"`);
+            return this.win.webContents.executeJavaScript(`document.getElementById("url").value = "hydrogen:${string.toLowerCase()}";0`);
         }
 
         // prettier-ignore
-        this.webContents.executeJavaScript(`window._hydrogenInternal_getFavicon = () => {let f;document.querySelectorAll("link").forEach((l) => {if (l.rel === "icon" || l.rel === "shortcut icon") {f = l.href;}});document.querySelectorAll("meta").forEach((m) => {if (m.getAttribute("itemprop") == "image") {f = m.content[0] !== "/" ? m.content : location.protocol + "//" + location.host + m.content;}});return f;};`);
+        this.webContents.executeJavaScript(
+            `window._hydrogenInternal_getFavicon = () => {let f;document.querySelectorAll("link").forEach((l) => {if (l.rel === "icon" || l.rel === "shortcut icon") {f = l.href;}});document.querySelectorAll("meta").forEach((m) => {if (m.getAttribute("itemprop") == "image") {f = m.content[0] !== "/" ? m.content : location.protocol + "//" + location.host + m.content;}});return f;};0`
+        );
 
         // prettier-ignore
         this.webContents.insertCSS(`._hydrogenInternal_loaderElement {user-select: none !important;position: fixed !important;bottom: 0 !important;left: 0 !important;padding: 2px 4px !important;background: #252525 !important;z-index: 99999999 !important;border-right: thin solid #666666 !important;border-top: thin solid #666666 !important;font-size: 12px !important;font-weight: 600 !important;color: #ffffff !important;max-width: 400px !important;overflow: hidden !important;text-overflow: ellipsis !important;border-radius: 0 4px 0 0 !important;box-sizing: content-box !important;display: block !important;white-space: nowrap !important;}`,{ cssOrigin: "user" });
 
         // prettier-ignore
 
-        this.webContents.executeJavaScript(`window._hydrogenInternal_loaderElement=document.createElement("div");_hydrogenInternal_loaderElement.classList.add("_hydrogenInternal_loaderElement");document.querySelectorAll("[href]").forEach((a)=>{a.addEventListener("mouseover",()=>{if(!a.href){return}_hydrogenInternal_loaderElement.innerHTML=a.href;document.body.appendChild(_hydrogenInternal_loaderElement)});a.addEventListener("mouseout",()=>{_hydrogenInternal_loaderElement.remove()});a.addEventListener("click",()=>{_hydrogenInternal_loaderElement.remove()})})`);
+        this.webContents.executeJavaScript(
+            `window._hydrogenInternal_loaderElement=document.createElement("div");_hydrogenInternal_loaderElement.classList.add("_hydrogenInternal_loaderElement");document.querySelectorAll("[href]").forEach((a)=>{a.addEventListener("mouseover",()=>{if(!a.href){return}_hydrogenInternal_loaderElement.innerHTML=a.href;document.body.appendChild(_hydrogenInternal_loaderElement)});a.addEventListener("mouseout",()=>{_hydrogenInternal_loaderElement.remove()});a.addEventListener("click",()=>{_hydrogenInternal_loaderElement.remove()})});0`
+        );
 
         // prettier-ignore
-        this.win.webContents.executeJavaScript(`if ("${await this.webContents.executeJavaScript("window._hydrogenInternal_getFavicon()")}" == "undefined") {if (document.querySelector("#omnibox svg") !== null) {const e = document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin", \`<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.75a7.25 7.25 0 0 1 5.63 11.819l4.9 4.9a.75.75 0 0 1-.976 1.134l-.084-.073-4.901-4.9A7.25 7.25 0 1 1 10 2.75Zm0 1.5a5.75 5.75 0 1 0 0 11.5 5.75 5.75 0 0 0 0-11.5Z" fill="currentColor"/></svg>\`);e.remove();} else {const e = document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin", \`<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.75a7.25 7.25 0 0 1 5.63 11.819l4.9 4.9a.75.75 0 0 1-.976 1.134l-.084-.073-4.901-4.9A7.25 7.25 0 1 1 10 2.75Zm0 1.5a5.75 5.75 0 1 0 0 11.5 5.75 5.75 0 0 0 0-11.5Z" fill="currentColor" /></svg>\`); e.remove();}} else {if (document.querySelector("#omnibox svg")) {const e = document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin", '<img src="${await this.webContents.executeJavaScript(`window._hydrogenInternal_getFavicon()`)}"/>');e.remove();} else {const e = document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin", '<img src="${await this.webContents.executeJavaScript(`window._hydrogenInternal_getFavicon()`)}"/>');e.remove(); }}`);
+        this.win.webContents.executeJavaScript(`if ("${await this.webContents.executeJavaScript("window._hydrogenInternal_getFavicon()")}" == "undefined") {if (document.querySelector("#omnibox svg") !== null) {const e = document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin", \`<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.75a7.25 7.25 0 0 1 5.63 11.819l4.9 4.9a.75.75 0 0 1-.976 1.134l-.084-.073-4.901-4.9A7.25 7.25 0 1 1 10 2.75Zm0 1.5a5.75 5.75 0 1 0 0 11.5 5.75 5.75 0 0 0 0-11.5Z" fill="currentColor"/></svg>\`);e.remove();} else {const e = document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin", \`<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.75a7.25 7.25 0 0 1 5.63 11.819l4.9 4.9a.75.75 0 0 1-.976 1.134l-.084-.073-4.901-4.9A7.25 7.25 0 1 1 10 2.75Zm0 1.5a5.75 5.75 0 1 0 0 11.5 5.75 5.75 0 0 0 0-11.5Z" fill="currentColor" /></svg>\`); e.remove();}} else {if (document.querySelector("#omnibox svg")) {const e = document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin", '<img src="${await this.webContents.executeJavaScript(`window._hydrogenInternal_getFavicon()`)}"/>');e.remove();} else {const e = document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin", '<img src="${await this.webContents.executeJavaScript(`window._hydrogenInternal_getFavicon()`)}"/>');e.remove(); }};0`);
 
         // prettier-ignore
         if (this.webContents.getURL().includes(path.join(__dirname, "../page"))) {
-            this.win.webContents.executeJavaScript(`if(document.querySelector("#omnibox svg")){const e=document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin",'<svg class="secure-indicator" width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a4 4 0 0 1 4 4v2h1.75A2.25 2.25 0 0 1 18 10.25V11c-.319 0-.637.11-.896.329l-.107.1c-.164.17-.33.323-.496.457L16.5 10.25a.75.75 0 0 0-.75-.75H4.25a.75.75 0 0 0-.75.75v9.5c0 .414.336.75.75.75h9.888a6.024 6.024 0 0 0 1.54 1.5H4.25A2.25 2.25 0 0 1 2 19.75v-9.5A2.25 2.25 0 0 1 4.25 8H6V6a4 4 0 0 1 4-4Zm8.284 10.122c.992 1.036 2.091 1.545 3.316 1.545.193 0 .355.143.392.332l.008.084v2.501c0 2.682-1.313 4.506-3.873 5.395a.385.385 0 0 1-.253 0c-2.476-.86-3.785-2.592-3.87-5.13L14 16.585v-2.5c0-.23.18-.417.4-.417 1.223 0 2.323-.51 3.318-1.545a.389.389 0 0 1 .566 0ZM10 13.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-10A2.5 2.5 0 0 0 7.5 6v2h5V6A2.5 2.5 0 0 0 10 3.5Z" fill="currentColor"/></svg>');e.remove()}else{const e=document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin",'<svg class="secure-indicator" width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a4 4 0 0 1 4 4v2h1.75A2.25 2.25 0 0 1 18 10.25V11c-.319 0-.637.11-.896.329l-.107.1c-.164.17-.33.323-.496.457L16.5 10.25a.75.75 0 0 0-.75-.75H4.25a.75.75 0 0 0-.75.75v9.5c0 .414.336.75.75.75h9.888a6.024 6.024 0 0 0 1.54 1.5H4.25A2.25 2.25 0 0 1 2 19.75v-9.5A2.25 2.25 0 0 1 4.25 8H6V6a4 4 0 0 1 4-4Zm8.284 10.122c.992 1.036 2.091 1.545 3.316 1.545.193 0 .355.143.392.332l.008.084v2.501c0 2.682-1.313 4.506-3.873 5.395a.385.385 0 0 1-.253 0c-2.476-.86-3.785-2.592-3.87-5.13L14 16.585v-2.5c0-.23.18-.417.4-.417 1.223 0 2.323-.51 3.318-1.545a.389.389 0 0 1 .566 0ZM10 13.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-10A2.5 2.5 0 0 0 7.5 6v2h5V6A2.5 2.5 0 0 0 10 3.5Z" fill="currentColor"/></svg>');e.remove()}`);
+            this.win.webContents.executeJavaScript(
+                `if(document.querySelector("#omnibox svg")){const e=document.querySelector("#omnibox svg");e.insertAdjacentHTML("beforebegin",'<svg class="secure-indicator" width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a4 4 0 0 1 4 4v2h1.75A2.25 2.25 0 0 1 18 10.25V11c-.319 0-.637.11-.896.329l-.107.1c-.164.17-.33.323-.496.457L16.5 10.25a.75.75 0 0 0-.75-.75H4.25a.75.75 0 0 0-.75.75v9.5c0 .414.336.75.75.75h9.888a6.024 6.024 0 0 0 1.54 1.5H4.25A2.25 2.25 0 0 1 2 19.75v-9.5A2.25 2.25 0 0 1 4.25 8H6V6a4 4 0 0 1 4-4Zm8.284 10.122c.992 1.036 2.091 1.545 3.316 1.545.193 0 .355.143.392.332l.008.084v2.501c0 2.682-1.313 4.506-3.873 5.395a.385.385 0 0 1-.253 0c-2.476-.86-3.785-2.592-3.87-5.13L14 16.585v-2.5c0-.23.18-.417.4-.417 1.223 0 2.323-.51 3.318-1.545a.389.389 0 0 1 .566 0ZM10 13.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-10A2.5 2.5 0 0 0 7.5 6v2h5V6A2.5 2.5 0 0 0 10 3.5Z" fill="currentColor"/></svg>');e.remove()}else{const e=document.querySelector("#omnibox img");e.insertAdjacentHTML("beforebegin",'<svg class="secure-indicator" width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a4 4 0 0 1 4 4v2h1.75A2.25 2.25 0 0 1 18 10.25V11c-.319 0-.637.11-.896.329l-.107.1c-.164.17-.33.323-.496.457L16.5 10.25a.75.75 0 0 0-.75-.75H4.25a.75.75 0 0 0-.75.75v9.5c0 .414.336.75.75.75h9.888a6.024 6.024 0 0 0 1.54 1.5H4.25A2.25 2.25 0 0 1 2 19.75v-9.5A2.25 2.25 0 0 1 4.25 8H6V6a4 4 0 0 1 4-4Zm8.284 10.122c.992 1.036 2.091 1.545 3.316 1.545.193 0 .355.143.392.332l.008.084v2.501c0 2.682-1.313 4.506-3.873 5.395a.385.385 0 0 1-.253 0c-2.476-.86-3.785-2.592-3.87-5.13L14 16.585v-2.5c0-.23.18-.417.4-.417 1.223 0 2.323-.51 3.318-1.545a.389.389 0 0 1 .566 0ZM10 13.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm0-10A2.5 2.5 0 0 0 7.5 6v2h5V6A2.5 2.5 0 0 0 10 3.5Z" fill="currentColor"/></svg>');e.remove()};0`
+            );
         }
 
         if (event?.url == this.SEARCH_ENGINE_URL || event?.url == "about:blank") return;
         if (event?.url == this.HOME_URL) {
             this.win.setTitle(`Home - Hydrogen`);
-            this.win.webContents.executeJavaScript('document.querySelector("#titlebar").innerHTML = `Home - Hydrogen`');
+            this.win.webContents.executeJavaScript('document.querySelector("#titlebar").innerHTML = `Home - Hydrogen`;0');
 
-            return this.win.webContents.executeJavaScript('document.getElementById("url").value = ""');
+            return this.win.webContents.executeJavaScript('document.getElementById("url").value = "";0');
         }
 
         const newVal = event?.url || this.webContents.getURL();
 
         this.win.setTitle(`${this.webContents.getTitle()} - Hydrogen`);
-        this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "${this.webContents.getTitle()} - Hydrogen"`);
+        this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "${this.webContents.getTitle()} - Hydrogen";0`);
 
-        this.win.webContents.executeJavaScript(`document.getElementById("url").value = "${newVal || "e"}"`);
+        this.win.webContents.executeJavaScript(`document.getElementById("url").value = "${newVal || "e"}";0`);
 
         if (!timeout) {
             timeout = setTimeout(() => {
