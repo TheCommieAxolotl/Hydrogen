@@ -186,14 +186,14 @@ module.exports = new (class MenuManager {
                     {
                         label: "Zoom In",
                         click: () => {
-                            this.view.webContents.setZoomFactor(view.webContents.zoomFactor + 0.1);
+                            this.view.webContents.setZoomFactor(this.view.webContents.zoomFactor + 0.1);
                         },
                         accelerator: "CommandOrControl+Plus",
                     },
                     {
                         label: "Zoom Out",
                         click: () => {
-                            this.view.webContents.setZoomFactor(view.webContents.zoomFactor - 0.1);
+                            this.view.webContents.setZoomFactor(this.view.webContents.zoomFactor - 0.1);
                         },
                         accelerator: "CommandOrControl+-",
                     },
