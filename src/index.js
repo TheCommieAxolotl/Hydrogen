@@ -512,11 +512,11 @@ const createWindow = async () => {
     win.loadFile("src/page/index.html");
 
     win.on("focus", () => {
-        win.webContents.emit("recFocus");
+        win.webContents.send("recFocus");
     });
 
     win.on("blur", () => {
-        win.webContents.emit("recUnfocus");
+        win.webContents.send("recUnfocus");
     });
 
     win.once("ready-to-show", () => {
