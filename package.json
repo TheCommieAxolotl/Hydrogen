@@ -1,6 +1,6 @@
 {
     "name": "hydrogen",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Hydrogen is a simple and fast web browser built on Electron.",
     "main": "src/index.js",
     "scripts": {
