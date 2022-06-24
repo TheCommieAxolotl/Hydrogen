@@ -6,7 +6,10 @@
     "scripts": {
         "build:sass": "sass  --no-source-map src/assets/sass:src/assets/css",
         "watch:sass": "sass  --no-source-map --watch src/assets/sass:src/assets/css",
-        "start": "electron ."
+        "start": "electron .",
+        "dist-mac": "npx electron-builder -m",
+        "dist-win": "npx electron-builder --ia32 --x64 -w portable",
+        "dist": "npm run dist-mac && npm run dist-win"
     },
     "author": "TheCommieAxolotl",
     "keywords": [
@@ -17,9 +20,8 @@
     ],
     "license": "MIT",
     "devDependencies": {
-        "electron": "^18.0.4"
-    },
-    "dependencies": {
+        "electron": "^18.0.4",
+        "electron-builder": "^23.1.0",
         "sass": "^1.49.8"
     },
     "repository": {
@@ -29,5 +31,26 @@
     "bugs": {
         "url": "https://github.com/TheCommieAxolotl/Hydrogen/issues"
     },
-    "homepage": "https://github.com/TheCommieAxolotl/Hydrogen#readme"
+    "homepage": "https://github.com/TheCommieAxolotl/Hydrogen#readme",
+    "build": {
+        "appId": "com.hydrogen.hydrogen",
+        "productName": "Hydrogen",
+        "copyright": "Copyright © 2022 Hydrogen Team",
+        "mac": {
+            "artifactName": "${productName}.${ext}",
+            "icon": "src/assets/images/icons/Hydrogen.icns",
+            "category": "public.app-category.productivity",
+            "identity": null
+        },
+        "win": {
+            "artifactName": "${productName}.${ext}",
+            "icon": "src/assets/images/icons/Hydrogen.ico",
+            "target": {
+                "target": "portable",
+                "arch": [
+                    "ia32"
+                ]
+            }
+        }
+    }
 }

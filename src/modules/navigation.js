@@ -275,7 +275,7 @@ module.exports = new (class NavigationManager {
         );
 
         // prettier-ignore
-        this.webContents.insertCSS(`._hydrogenInternal_loaderElement {user-select: none !important;position: fixed !important;bottom: 0 !important;left: 0 !important;padding: 2px 4px !important;background: #252525 !important;z-index: 99999999 !important;border-right: thin solid #666666 !important;border-top: thin solid #666666 !important;font-size: 12px !important;font-weight: 600 !important;color: #ffffff !important;max-width: 400px !important;overflow: hidden !important;text-overflow: ellipsis !important;border-radius: 0 4px 0 0 !important;box-sizing: content-box !important;display: block !important;white-space: nowrap !important;}`,{ cssOrigin: "user" });
+        this.webContents.insertCSS(`._hydrogenInternal_loaderElement {user-select: none !important;position: fixed !important;bottom: 0 !important;left: 0 !important;padding: 2px 4px !important;background: #252525 !important;z-index: 99999999 !important;border-right: thin solid #666666 !important;border-top: thin solid #666666 !important;font-size: 12px !important;font-weight: 500 !important;color: #ffffff !important;max-width: 400px !important;overflow: hidden !important;text-overflow: ellipsis !important;border-radius: 0 4px 0 0 !important;box-sizing: content-box !important;display: block !important;white-space: nowrap !important;}`,{ cssOrigin: "user" });
 
         // prettier-ignore
 

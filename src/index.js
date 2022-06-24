@@ -16,8 +16,19 @@ process.traceProcessWarnings = true;
 
 let win;
 
-process.env.SETTINGS_PATH = path.join(__dirname, "../", "data", "settings.json");
-process.env.HISTORY_PATH = path.join(__dirname, "../", "data", "history.txt");
+process.env.HYDROGEN_APPDATA = process.env.APPDATA || (process.platform == "darwin" ? process.env.HOME + "/Library/Application Support" : process.env.HOME + "/.config");
+
+process.env.HYDROGEN_FOLDER_PATH = path.join(process.env.HYDROGEN_APPDATA, "/HydrogenApp");
+process.env.SETTINGS_PATH = path.join(process.env.HYDROGEN_APPDATA, "HydrogenApp/data", "settings.json");
+process.env.HISTORY_PATH = path.join(process.env.HYDROGEN_APPDATA, "HydrogenApp/data", "history.txt");
+
+if (!fs.existsSync(process.env.HYDROGEN_FOLDER_PATH)) {
+    fs.mkdirSync(process.env.HYDROGEN_FOLDER_PATH);
+
+    if (!fs.existsSync(path.join(process.env.HYDROGEN_FOLDER_PATH, "data"))) {
+        fs.mkdirSync(path.join(process.env.HYDROGEN_FOLDER_PATH, "data"));
+    }
+}
 if (!fs.existsSync(process.env.SETTINGS_PATH)) {
     fs.writeFileSync(process.env.SETTINGS_PATH, "{}");
 }
