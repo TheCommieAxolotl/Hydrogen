@@ -11,6 +11,7 @@ app.name = "Hydrogen";
 
 const NavigationManager = require("./modules/navigation");
 const MenuManager = require("./modules/menus");
+const getVulnerabilities = require("./modules/vulnerabilities");
 
 process.traceProcessWarnings = true;
 
@@ -36,7 +37,7 @@ if (!fs.existsSync(process.env.HISTORY_PATH)) {
     fs.writeFileSync(process.env.HISTORY_PATH, "[]");
 }
 
-const createWindow = () => {
+const createWindow = async () => {
     win = new BrowserWindow({
         minWidth: 300,
         minHeight: 300,
@@ -55,8 +56,18 @@ const createWindow = () => {
     view.setBounds({ x: 0, y: 115, width: 800, height: 516 });
     view.setAutoResize({ width: true, height: true });
 
+    const vulnerabilities = await getVulnerabilities();
+
     NavigationManager.initialise(view, win);
-    NavigationManager.goHome();
+
+    if (vulnerabilities.current.active == "true") {
+        view.webContents.loadFile(path.join(__dirname, "page", `vulnerability.html`));
+        view.webContents.executeJavaScript(
+            `location.href += \`?level=${vulnerabilities.current.level}&title=${vulnerabilities.current.title}&action=${vulnerabilities.current.status}\`;0`
+        );
+    } else {
+        NavigationManager.goHome();
+    }
     MenuManager.initialise(view, win);
 
     let se = "duckduckgo";

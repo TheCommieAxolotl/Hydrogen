@@ -224,6 +224,9 @@ module.exports = new (class NavigationManager {
         if (this.webContents.getTitle() === "ABOUT:BLANK") {
             this.win.webContents.executeJavaScript('document.querySelector("#url").value = "";0');
             return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Document - Hydrogen";0`);
+        } else if (this.webContents.getTitle() == "HYDROGEN:VULNERABILITY") {
+            this.win.webContents.executeJavaScript('document.querySelector("#url").value = "";0');
+            return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Vulnerabilities - Hydrogen";0`);
         } else if (this.webContents.getTitle() == "HYDROGEN:ERROR") {
             this.win.webContents.executeJavaScript('document.querySelector("#url").value = "";0');
             return this.win.webContents.executeJavaScript(`document.querySelector("#titlebar").innerHTML = "Problem Loading Page - Hydrogen";0`);

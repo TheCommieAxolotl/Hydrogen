@@ -203,3 +203,104 @@ h1 {
   background: #6f6f6f;
   pointer-events: none;
 }
+
+#vulnerability {
+  padding: 10%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+#vulnerability .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#vulnerability .title h1 {
+  margin: 0;
+  font-size: 80px;
+}
+@media screen and (max-width: 1000px) {
+  #vulnerability .title h1 {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #vulnerability .title h1 {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 300px) {
+  #vulnerability .title h1 {
+    font-size: 20px;
+  }
+}
+#vulnerability .title svg {
+  color: #ffd856;
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 1000px) {
+  #vulnerability .title svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #vulnerability .title svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media screen and (max-width: 300px) {
+  #vulnerability .title svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+#vulnerability > h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 500;
+  color: #d5d5d5;
+  margin-top: 10px;
+}
+#vulnerability > h2 .type {
+  font-weight: 600;
+  color: #ffd856;
+}
+@media screen and (max-width: 1000px) {
+  #vulnerability > h2 {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #vulnerability > h2 {
+    font-size: 15px;
+  }
+}
+#vulnerability > h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #bbbbbb;
+  margin-top: 10px;
+}
+@media screen and (max-width: 1000px) {
+  #vulnerability > h3 {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #vulnerability > h3 {
+    font-size: 10px;
+  }
+}
+#vulnerability.moderate {
+  background-color: #574e28;
+}
+#vulnerability.high {
+  background-color: #582424;
+}
