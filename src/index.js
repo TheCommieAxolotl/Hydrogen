@@ -41,6 +41,8 @@ const createWindow = async () => {
     win = new BrowserWindow({
         minWidth: 300,
         minHeight: 300,
+        width: 2798,
+        height: 1716,
         resizable: true,
         titleBarStyle: "hidden",
         webPreferences: {
@@ -49,11 +51,14 @@ const createWindow = async () => {
             nodeIntegration: true,
         },
         show: false,
+        titleBarOverlay: {
+            height: 30,
+        },
     });
 
     const view = new BrowserView();
     win.setBrowserView(view);
-    view.setBounds({ x: 0, y: 115, width: 800, height: 516 });
+    view.setBounds({ x: 0, y: 72, width: 2798, height: 1642 });
     view.setAutoResize({ width: true, height: true });
 
     const vulnerabilities = await getVulnerabilities();
