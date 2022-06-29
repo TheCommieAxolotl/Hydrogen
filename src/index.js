@@ -53,6 +53,7 @@ const createWindow = async () => {
         show: false,
         titleBarOverlay: {
             height: 30,
+            color: "#202020",
         },
     });
 
