@@ -8,8 +8,8 @@
         "watch:sass": "sass  --no-source-map --watch src/assets/sass:src/assets/css",
         "start": "electron .",
         "dist-mac": "npx electron-builder -m",
-        "dist-win": "npx electron-builder --ia32 --x64 -w",
-        "dist-linux": "npx electron-builder --ia32 --x64 -l ",
+        "dist-win": "npx electron-builder -w",
+        "dist-linux": "npx electron-builder -l ",
         "dist": "npm run dist-mac && npm run dist-win"
     },
     "author": {
